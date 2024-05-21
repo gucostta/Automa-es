@@ -5,6 +5,9 @@ RENOMEADOR DE PASTAS '
 import os
 
 def renomear_pastas(diretorio):
+    if not os.path.exists(diretorio):
+        print(f"O diretório {diretorio} não existe.")
+        return
     lista_arquivos = os.listdir(diretorio)
     for arquivo in lista_arquivos:
         caminho_completo = os.path.join(diretorio, arquivo)
@@ -57,5 +60,7 @@ def aplicar_regras(nome_original):
     }
     return regras.get(nome_original, nome_original)
 
-diretorio_alvo = r"Z:\Beneficios\6. VA VR VT\2024\02. Cesta Básica - TESTE\Macro - Lista Branca\Arquivos txt"
+# Solicitar o caminho do diretório alvo
+diretorio_alvo = input("Digite o caminho do diretório onde deseja renomear pastas e arquivos: ")
 renomear_pastas(diretorio_alvo)
+
